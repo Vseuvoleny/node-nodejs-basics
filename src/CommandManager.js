@@ -341,9 +341,7 @@ export class CommandManager {
     }
 
     if (!sourcePath.endsWith('.gz')) {
-      process.stdout.write(
-        `\n\nFile is not a Brotli compressed file (.gz)\n\n`,
-      );
+      process.stdout.write(`\n\nFile is not a compressed file (.gz)\n\n`);
       return;
     }
 
@@ -354,15 +352,7 @@ export class CommandManager {
         newSourcePath = path.join(newSourcePath, originalName);
       }
     } catch (error) {
-      if (error.code === 'ENOENT') {
-        // Если файл не существует, проверяем является ли путь директорией
-        if (newSourcePath.endsWith(path.sep)) {
-          const originalName = path.basename(sourcePath, '.gz');
-          newSourcePath = path.join(newSourcePath, originalName);
-        }
-      } else {
-        throw error;
-      }
+      process.stdout.write(`\n\nOperation failed: ${error.message}\n\n`);
     }
 
     const zstream = zip.createBrotliDecompress();

@@ -16,9 +16,7 @@
       "id": "38efa18f-6b36-496d-862e-af8f1310cbe8",
       "name": "Smith",
       "age": 23,
-      "hobbies": [
-        "drugs"
-      ]
+      "hobbies": ["swim"]
     }
   ]
 }

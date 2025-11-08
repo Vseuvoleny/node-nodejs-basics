@@ -8,23 +8,11 @@
   },
   "type": "module",
   "scripts": {
-    "cli:args": "node src/cli/args.js --some-arg value1 --other 1337 --arg2 42",
-    "cli:env": "npx cross-env SOME=any RSS_foo=bar RSS_bar=baz node src/cli/env.js",
-    "cp": "node src/cp/cp.js",
-    "fs:copy": "node src/fs/copy.js",
-    "fs:create": "node src/fs/create.js",
-    "fs:delete": "node src/fs/delete.js",
-    "fs:list": "node src/fs/list.js",
-    "fs:read": "node src/fs/read.js",
-    "fs:rename": "node src/fs/rename.js",
-    "hash": "node src/hash/calcHash.js",
-    "modules": "node src/modules/esm.mjs",
-    "streams:read": "node src/streams/read.js",
-    "streams:transform": "node src/streams/transform.js",
-    "streams:write": "node src/streams/write.js",
-    "wt": "node src/wt/main.js",
-    "zip:compress": "node src/zip/compress.js",
-    "zip:decompress": "node src/zip/decompress.js"
+    "stsrt:dev": "cross-env NODE_ENV=development nodemon",
+    "start:build": "tsc",
+    "start:multi": "cross-env NODE_ENV=development ts-node --esm src/cluster.ts",
+    "start": "node dist/index.js",
+    "start:dev": "nodemon dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -40,5 +28,13 @@
   "bugs": {
     "url": "https://github.com/AlreadyBored/node-nodejs-basics/issues"
   },
-  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme"
+  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme",
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
 }

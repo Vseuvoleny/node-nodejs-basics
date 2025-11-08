@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": "38efa18f-6b36-496d-862e-af8f1310cbe2",
+      "name": "Jonh",
+      "age": 30,
+      "hobbies": []
+    },
+    {
+      "id": "38efa18f-6b36-496d-862e-af8f1310cbe1",
+      "name": "Chris",
+      "age": 22,
+      "hobbies": []
+    },
+    {
+      "id": "38efa18f-6b36-496d-862e-af8f1310cbe8",
+      "name": "Smith",
+      "age": 23,
+      "hobbies": [
+        "drugs"
+      ]
+    }
+  ]
+}

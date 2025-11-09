@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 import path from 'node:path';
 
-import { userController } from './controllers/user.controller.ts';
+import { userController } from './controllers/user.controller';
 
 dotenv.config({
   path: path.join('.', '.env', `.env.${process.env.NODE_ENV?.toLowerCase()}`),
@@ -15,7 +15,7 @@ const server = http.createServer(
   async (req: http.IncomingMessage, res: http.ServerResponse) => {
     switch (req.method) {
       case 'GET':
-        if (['', '/users'].includes(req.url)) {
+        if (['', '/users'].includes(req.url!)) {
           await userController['getAll'](res);
         } else if (req.url?.startsWith('/users/')) {
           await userController['getUserById'](req, res);

@@ -1,15 +1,15 @@
-import { User } from '../mock/users.ts';
+import { User } from '../type/user';
 import http from 'node:http';
-import { isValidUUID } from '../utils/isUuid.ts';
+import { isValidUUID } from '../utils/isUuid';
 import { randomUUID } from 'node:crypto';
 
-import { readUsersFile, writeUsersFile } from '../utils/readFile.ts';
+import { readUsersFile, writeUsersFile } from '../utils/file';
 
 type Req = http.IncomingMessage;
 
-type Res = http.ServerResponse;
+export type Res = http.ServerResponse;
 
-const getAllUsers = async (res: Res) => {
+export const getAllUsers = async (res: Res) => {
   try {
     res.setHeader('Content-Type', 'application/json');
     const usersData = await readUsersFile();
@@ -20,8 +20,8 @@ const getAllUsers = async (res: Res) => {
   }
 };
 
-const getUserById = async (req: Req, res: Res) => {
-  const userId = req.url.split('/')[2];
+export const getUserById = async (req: Req, res: Res) => {
+  const userId = req.url!.split('/')[2];
   res.setHeader('Content-Type', 'application/json');
 
   try {
@@ -42,7 +42,7 @@ const getUserById = async (req: Req, res: Res) => {
   }
 };
 
-const createUser = async (req: Req, res: Res) => {
+export const createUser = async (req: Req, res: Res) => {
   let body = '';
   res.setHeader('Content-Type', 'application/json');
 
@@ -67,7 +67,7 @@ const createUser = async (req: Req, res: Res) => {
         );
       }
 
-      const newUser: User = { id: randomUUID(), ...bodyObject };
+      const newUser: User = { ...bodyObject, id: randomUUID() };
       const userData = await readUsersFile();
       userData.data.push(newUser);
 

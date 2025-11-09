@@ -1,7 +1,11 @@
 import path from 'node:path';
 import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
 
-const filePath = path.join(process.cwd(), 'src', 'mock', 'users.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const filePath = path.join(__dirname, '..', '..', 'src', 'mock', 'users.json');
 
 export const readUsersFile = async <
   T extends Record<string, unknown>,

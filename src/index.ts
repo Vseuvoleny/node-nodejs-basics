@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 import path from 'node:path';
 
-import { userController } from './controllers/user.controller';
+import { userController } from './controllers/user.controller.js';
 
 dotenv.config({
   path: path.join('.', '.env', `.env.${process.env.NODE_ENV?.toLowerCase()}`),

@@ -1,7 +1,7 @@
 import cluster from 'node:cluster';
 import http from 'node:http';
 import os from 'node:os';
-import { userController } from './controllers/user.controller';
+import { userController } from './controllers/user.controller.js';
 import dotenv from 'dotenv';
 import path from 'node:path';
 

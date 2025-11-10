@@ -1,6 +1,6 @@
-import { getAllUsers, createUser, getUserById } from './user.controller';
-import { readUsersFile, writeUsersFile } from '../utils/file';
-import { isValidUUID } from '../utils/isUuid';
+import { getAllUsers, createUser, getUserById } from './user.controller.js';
+import { readUsersFile, writeUsersFile } from '../utils/file.js';
+import { isValidUUID } from '../utils/isUuid.js';
 import { randomUUID } from 'node:crypto';
 
 jest.mock('../utils/file.ts', () => ({

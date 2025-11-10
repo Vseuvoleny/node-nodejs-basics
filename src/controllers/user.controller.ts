@@ -1,9 +1,9 @@
-import { User } from '../type/user';
+import type { User } from '../type/user.ts';
 import http from 'node:http';
-import { isValidUUID } from '../utils/isUuid';
+import { isValidUUID } from '../utils/isUuid.js';
 import { randomUUID } from 'node:crypto';
 
-import { readUsersFile, writeUsersFile } from '../utils/file';
+import { readUsersFile, writeUsersFile } from '../utils/file.js';
 
 type Req = http.IncomingMessage;
 
@@ -25,7 +25,7 @@ export const getUserById = async (req: Req, res: Res) => {
   res.setHeader('Content-Type', 'application/json');
 
   try {
-    if (!isValidUUID(userId)) {
+    if (!isValidUUID(userId ?? '')) {
       res.writeHead(400).end(JSON.stringify({ error: 'userId is not a uuid' }));
       return;
     }
@@ -136,7 +136,7 @@ const deleteUser = async (req: Req, res: Res) => {
   res.setHeader('Content-Type', 'application/json');
 
   try {
-    if (!isValidUUID(userId)) {
+    if (!isValidUUID(userId ?? '')) {
       res.writeHead(400).end(JSON.stringify({ error: 'userId is not a uuid' }));
       return;
     }
